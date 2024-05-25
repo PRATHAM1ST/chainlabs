@@ -7,6 +7,12 @@ export const OuterSans = localFont({
 	variable: "--font-outer-sans",
 });
 
+export const OuterSansOutline = localFont({
+	src: "../assets/fonts/OuterSansOutlineRegular.otf",
+	weight: "400",
+	variable: "--font-outer-sans",
+});
+
 // export const gotham = localFont({
 // 	src: "../Assets/gotham.otf",
 // 	weight: "400",
