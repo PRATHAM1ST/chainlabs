@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header() {
+type HeaderProps = {};
+
+export default function Header(props: HeaderProps) {
 	return (
 		<header className="max-w-[1154px] p-8 px-16 mx-auto bg-primary text-primary-background flex justify-between items-center clip-pathing-header">
 			<div className="flex gap-2">

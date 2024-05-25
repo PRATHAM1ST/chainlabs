@@ -5,6 +5,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/stories/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     extend: {
@@ -86,6 +87,9 @@ const config: Config = {
         sm: "5px 5px 0px 0px rgba(0, 0, 0, 100%)",
         md: "10px 10px 0px 0px rgba(0, 0, 0, 100%)",
         lg: "15px 15px 0px 0px rgba(0, 0, 0, 100%)",
+      },
+      fontFamily: {
+        sans: ['--font-outer-sans'],
       },
     },
   },

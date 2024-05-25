@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 export const OuterSans = localFont({
 	src: "../assets/fonts/OuterSansRegular.otf",
 	weight: "400",
+	variable: "--font-outer-sans",
 });
 
 // export const gotham = localFont({
