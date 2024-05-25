@@ -1,3 +1,4 @@
+"use client";
 import HeroModel from "../components/HeroModel";
 import TaglineAndStats from "../components/TaglineAndStats";
 import Header from "../components/Header";
