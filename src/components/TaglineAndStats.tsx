@@ -45,7 +45,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 			<Image
 				src={require("@/assets/images/section2.png")}
 				alt="primobots"
-				width={window.innerWidth}
+				width={1980}
 				height={require("@/assets/images/section2.png").height}
                 className="w-full h-fit px-10"
 			/>
