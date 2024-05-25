@@ -3,7 +3,9 @@ import Image from "next/image";
 import { OuterSansOutline } from "../app/fonts";
 import { useState } from "react";
 
-export default function TaglineAndStats() {
+type TaglineAndStatsProps = {};
+
+export default function TaglineAndStats(props: TaglineAndStatsProps) {
 	const [counter, setCounter] = useState(0);
 	return (
 		<div className="flex flex-col items-center justify-start w-full h-fit uppercase gap-4">
