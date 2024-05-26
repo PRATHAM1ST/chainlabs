@@ -1,4 +1,5 @@
 import React from 'react';
+import { twMerge } from 'tailwind-merge'
 
 interface ButtonProps {
   /**
@@ -46,7 +47,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={[modeSize, mode, modeSquare].join(' ')}
+      className={twMerge(modeSize, mode, modeSquare)}
       {...props}
     >
       {label}
