@@ -11,14 +11,13 @@ type HeroModelProps = {};
 export default function HeroModel(props: HeroModelProps) {
 	const [modelClicked, setModelClicked] = useState(false);
 	const [mouseX, mouseY] = [useMotionValue(0), useMotionValue(0)];
-
 	return (
 		<div className="w-full h-[80vh]">
 			<Canvas
 				camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}
 				onPointerMove={(e) => {
-					mouseX.set(e.clientX / 30 - 23);
-					mouseY.set(-e.clientY / 30 + 12);
+					mouseX.set(e.clientX / 1 - 23);
+					mouseY.set(-e.clientY / 1 + 12);
 				}}
 				onPointerUp={() => setModelClicked(false)}
 			>
@@ -50,6 +49,7 @@ export default function HeroModel(props: HeroModelProps) {
 					}}
 					transition={{
 						duration: 1,
+						delay: 1,
 					}}
 					// rotation={[mouseX, mouseY, 0]}
 					rotation={[0.45, 0.35, 0]}

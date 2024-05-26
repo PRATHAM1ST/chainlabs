@@ -6,10 +6,12 @@ Command: npx gltfjsx@6.2.16 public/models/primobot.gltf -t
 "use client";
 
 import * as THREE from "three";
-import React, { useRef } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { useGLTF, OrthographicCamera } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { motion } from "framer-motion-3d";
+import { useMotionValue } from "framer-motion";
+import { scroll } from "framer-motion";
 
 type GLTFResult = GLTF & {
 	nodes: {
@@ -39,11 +41,19 @@ type ContextType = Record<
 
 export function Primobot(props: JSX.IntrinsicElements["group"]) {
 	const { nodes, materials } = useGLTF("/models/primobot.gltf") as GLTFResult;
+	const [progress, setProgress] = useState(0);
+	const [initialProgressDone, setInitialProgressDone] = useState(false);
+	scroll((progress) => setProgress(progress / 10));
+
+	// console.log('progress', 0.445 + progress);
 	return (
 		<group {...props} dispose={null}>
-			<directionalLight intensity={5} position={[-7.163, 10, 7.5]} />
-			<directionalLight intensity={2.5} position={[5, 10, 3.79]} />
-			<directionalLight
+			<motion.directionalLight
+				intensity={5}
+				position={[-7.163, 10, 7.5]}
+			/>
+			<motion.directionalLight intensity={2.5} position={[5, 10, 3.79]} />
+			<motion.directionalLight
 				intensity={1}
 				position={[-12.914, 3.31, -11.064]}
 			/>
@@ -59,11 +69,12 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				}}
 				animate={{
 					x: 0,
-					y: 0.445,
+					y: progress + 0.445,
 					z: 0.001,
 				}}
 				transition={{
-					duration: 1,
+					duration: initialProgressDone ? 0.25 : 1,
+					onComplete: () => setInitialProgressDone(true),
 				}}
 				position={[0, 0.445, 0.001]}
 				rotation={[Math.PI / 2, 0, 0]}
@@ -79,20 +90,20 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 			</motion.group>
 			<motion.group
 				initial={{
-					x: 0,
+					x: -0.001,
 					y: 1,
-					z: 0.001,
+					z: -0.013,
 				}}
 				animate={{
 					x: -0.001,
-					y: 0.505,
+					y: progress + 0.505,
 					z: -0.013,
 				}}
 				transition={{
-					duration: 1,
-					delay: 0.2,
+					duration: initialProgressDone ? 0.25 : 1,
+					delay: initialProgressDone ? 0 : 0.2,
 				}}
-				position={[-0.001, 0.505, -0.013]}
+				position={[-0.001, progress + 0.505, -0.013]}
 				scale={[0.082, 0.105, 0.082]}
 			>
 				<mesh
@@ -113,12 +124,12 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				animate={{
 					x: 0,
 					y: 0.353,
-					z: 0.115,
+					z: progress + 0.115,
 				}}
 				transition={{
-					duration: 1,
+					duration: initialProgressDone ? 0.25 : 1,
 				}}
-				position={[0, 0.353, 0.115]}
+				position={[0, 0.353, progress + 0.115]}
 				rotation={[-Math.PI / 2, 0, 0]}
 				scale={[-0.006, 0.006, 0.006]}
 			>
@@ -139,11 +150,11 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				}}
 				animate={{
 					x: 0,
-					y: 0.445,
+					y: -progress + 0.445,
 					z: 0.001,
 				}}
 				transition={{
-					duration: 1,
+					duration: initialProgressDone ? 0.25 : 1,
 				}}
 				geometry={nodes.Headeyes_6033.geometry}
 				material={materials["Matte Magenta"]}
@@ -159,10 +170,10 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				animate={{
 					x: -0.001,
 					y: 0.418,
-					z: 0.092,
+					z: progress + 0.092,
 				}}
 				transition={{
-					duration: 1,
+					duration: initialProgressDone ? 0.25 : 1,
 				}}
 				geometry={nodes.Cube029.geometry}
 				material={materials["Glowing Yellow"]}
