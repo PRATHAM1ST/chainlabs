@@ -10,6 +10,7 @@ import { Button } from "@/stories/LiveButton";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import Counter from "./Counter";
+import NumberCounter from "./NumberCounter";
 
 type TaglineAndStatsProps = {};
 
@@ -63,7 +64,10 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 				</motion.h1>
 			</motion.div>
 			<div className="flex flex-wrap gap-6 justify-center items-center">
-				<h1>555/5555 MINTED</h1>
+				<h1>
+					<NumberCounter from={0} to={555} />
+					/5555 MINTED
+				</h1>
 				<div className="flex gap-4 justify-center items-center relative h-8">
 					<Counter />
 				</div>
