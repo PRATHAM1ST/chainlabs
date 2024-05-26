@@ -98,6 +98,8 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 					x: -0.001,
 					y: progress + 0.505,
 					z: -0.013,
+					rotateY: progress * 30,
+					scale: progress + 0.082,
 				}}
 				transition={{
 					duration: initialProgressDone ? 0.25 : 1,

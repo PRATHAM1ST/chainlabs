@@ -36,7 +36,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 					animate={{ y: topTaglineIsInView ? 0 : 100 }}
 					transition={{ duration: 1 }}
 					className={twMerge(
-						"text-4xl md:text-6xl text-primary text-center",
+						"text-5xl md:text-6xl text-primary text-center",
 						OuterSansBlack.className
 					)}
 				>
@@ -59,7 +59,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 					viewport={{ once: true }}
 					transition={{ duration: 1 }}
 					className={twMerge(
-						"text-4xl md:text-6xl text-primary text-center",
+						"text-5xl md:text-6xl text-primary text-center",
 						OuterSansBlackOutline.className
 					)}
 				>

@@ -12,8 +12,8 @@ export default function StoryBehind() {
 
 	return (
 		<div className="bg-primary flex flex-col" id="story">
-			<div className="flex p-2">
-				<div className="grid grid-cols-3 w-[40%] gap-2">
+			<div className="flex flex-col lg:flex-row p-2">
+				<div className="grid grid-cols-3 h-fit lg:w-[40%] gap-2">
 					{images.map((_, i) => (
 						<div
 							className="overflow-hidden"
@@ -39,7 +39,7 @@ export default function StoryBehind() {
 						</div>
 					))}
 				</div>
-				<div className="w-[60%] p-16">
+				<div className="p-4 lg:w-[60%] lg:p-16">
 					<h1 className="text-6xl font-bold text-white uppercase">
 						Here’s The story behind primobots.
 					</h1>
@@ -55,7 +55,7 @@ export default function StoryBehind() {
 							</h3>
 							<p
 								className={twMerge(
-									"text-white text-2xl font-thin w-[60%]",
+									"text-white lg:text-2xl font-thin w-[60%]",
 									sora.className
 								)}
 							>
@@ -78,7 +78,7 @@ export default function StoryBehind() {
 							</h3>
 							<p
 								className={twMerge(
-									"text-white text-2xl font-thin w-[60%]",
+									"text-white lg:text-2xl font-thin w-[60%]",
 									sora.className
 								)}
 							>
@@ -94,10 +94,17 @@ export default function StoryBehind() {
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col gap-6 p-16 pb-48 relative overflow-hidden">
+			<div className="flex flex-col gap-6 p-4 lg:p-16 pb-16 lg:pb-48 relative overflow-hidden z-0">
+				<Image
+					src={require(`@/assets/logo.svg`)}
+					alt="Primobots Logo"
+					className="fill-secondary absolute right-0 top-0 translate-x-[25%] opacity-25 lg:opacity-100 -z-10"
+					height={300}
+					width={300}
+				/>
 				<p
 					className={twMerge(
-						"text-white text-2xl font-thin w-[60%]",
+						"text-white text-2xl font-thin lg:w-[60%]",
 						sora.className
 					)}
 				>
@@ -107,19 +114,12 @@ export default function StoryBehind() {
 
 				<h1
 					className={twMerge(
-						"text-secondary text-6xl uppercase w-[70%]",
+						"text-secondary text-5xl lg:text-6xl uppercase lg:w-[70%]",
 						OuterSansBlack.className
 					)}
 				>
 					So...what will you do with your primobot?
 				</h1>
-				<Image
-					src={require(`@/assets/logo.svg`)}
-					alt="Primobots Logo"
-					className="fill-secondary absolute right-0 top-0 translate-x-[25%]"
-					height={300}
-					width={300}
-				/>
 			</div>
 		</div>
 	);
