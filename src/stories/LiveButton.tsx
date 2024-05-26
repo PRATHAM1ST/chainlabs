@@ -23,6 +23,10 @@ interface ButtonProps {
    */
   square?: boolean;
   /**
+   * Additional classes
+   */
+  className?: string;
+  /**
    * Optional click handler
    */
   onClick?: () => void;
@@ -37,6 +41,7 @@ export const Button = ({
   backgroundColor,
   label,
   square = false,
+  className = '',
   ...props
 }: ButtonProps) => {
     const mode = primary
@@ -47,7 +52,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={twMerge(modeSize, mode, modeSquare)}
+      className={twMerge(modeSize, mode, modeSquare, className)}
       {...props}
     >
       {label}

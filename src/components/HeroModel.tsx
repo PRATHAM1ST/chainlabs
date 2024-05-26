@@ -10,7 +10,10 @@ export default function HeroModel(props: HeroModelProps) {
 	const [modelHovered, setModelHovered] = useState(false);
 	return (
 		<div className="w-full h-[80vh]">
-			<Canvas camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }} onPointerUp={() => setModelHovered(false)}>
+			<Canvas
+				camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}
+				onPointerUp={() => setModelHovered(false)}
+			>
 				<OrbitControls enableZoom={false} enabled={modelHovered} />
 				<ambientLight intensity={0.5} />
 				{/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
