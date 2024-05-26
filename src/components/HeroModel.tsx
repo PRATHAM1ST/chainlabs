@@ -3,34 +3,64 @@ import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Primobot } from "./Primobot";
+import { motion } from "framer-motion-3d";
+import { useMotionValue } from "framer-motion";
 
 type HeroModelProps = {};
 
 export default function HeroModel(props: HeroModelProps) {
-	const [modelHovered, setModelHovered] = useState(false);
+	const [modelClicked, setModelClicked] = useState(false);
+	const [mouseX, mouseY] = [useMotionValue(0), useMotionValue(0)];
+
 	return (
 		<div className="w-full h-[80vh]">
 			<Canvas
 				camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}
-				onPointerUp={() => setModelHovered(false)}
+				onPointerMove={(e) => {
+					mouseX.set((e.clientX / 30) - 12);
+					mouseY.set((-e.clientY / 30) + 6);
+				}}
+				onPointerUp={() => setModelClicked(false)}
 			>
-				<OrbitControls enableZoom={false} enabled={modelHovered} />
-				<ambientLight intensity={0.5} />
-				{/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-			<pointLight position={[-10, -10, -10]} /> */}
-				<mesh rotation={[0.45, 0.25, 0]}>
-					{/* <primitive
-						object={Primobot.scene}
-						scale={4.5}
-						position={[0, -2, 0]}
-					/> */}
+				<OrbitControls enableZoom={false} enabled={modelClicked} />
+				{/* <motion.pointLight
+					whileHover={{
+						x: mouseX.get(),
+						y: mouseY.get(),
+					}}
+					intensity={0.5}
+					position={[0, 0, 5]}
+				/> */}
+				<motion.pointLight
+					intensity={1}
+					color={"white"}
+					position={[mouseX, mouseY, 0]}
+					castShadow={true}
+				/>
+				<motion.mesh
+					// whileHover={{
+					// 	// scale: 1.05,
+					// 	rotate: [mouseX.get(), mouseY.get(), 0]
+					// }}
+					initial={{
+						scale: 2,
+					}}
+					animate={{
+						scale: 1,
+					}}
+					transition={{
+						duration: 1,
+					}}
+					// rotation={[mouseX, mouseY, 0]}
+					rotation={[0.45, 0.35, 0]}
+				>
 					<Primobot
 						scale={4.5}
 						position={[0, -2, 0]}
-						onClick={() => setModelHovered(true)}
-						onPointerUp={() => setModelHovered(false)}
+						onClick={() => setModelClicked(true)}
+						onPointerUp={() => setModelClicked(false)}
 					/>
-				</mesh>
+				</motion.mesh>
 			</Canvas>
 		</div>
 	);
