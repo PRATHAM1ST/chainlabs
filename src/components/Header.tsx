@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type HeaderProps = {
@@ -15,20 +15,14 @@ type HeaderProps = {
 
 export default function Header(props: HeaderProps) {
 	const [mobileMenu, setMobileMenu] = useState(false);
+	const ref = useRef<HTMLDivElement>(null);
+	const isInView = useInView(ref);
 	return (
-		<motion.div className="overflow-hidden">
+		<motion.div className="overflow-hidden" ref={ref}>
 			<motion.header
-				whileInView={{
-					y: 0,
-					clipPath: "polygon(0 0, 100% 0%, 97% 100%, 3% 100%)",
-				}}
 				animate={{
-					y: 0,
-					clipPath: "polygon(0 0, 100% 0%, 97% 100%, 3% 100%)",
-				}}
-				exit={{
-					y: -110,
-					clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+					y: isInView ? 0 : -110,
+					clipPath: isInView ? "polygon(0 0, 100% 0%, 97% 100%, 3% 100%)" : "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
 				}}
 				initial={{
 					y: -110,

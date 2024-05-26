@@ -16,6 +16,10 @@ type TaglineAndStatsProps = {};
 
 export default function TaglineAndStats(props: TaglineAndStatsProps) {
 	const [counter, setCounter] = useState(0);
+	const topTaglineRef = useRef<HTMLHeadingElement>(null);
+	const bottomTaglineRef = useRef<HTMLHeadingElement>(null);
+	const topTaglineIsInView = useInView(topTaglineRef);
+	const bottomTaglineIsInView = useInView(bottomTaglineRef);
 
 	function handleCounterIncrement() {
 		setCounter(counter + 1);
@@ -24,6 +28,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 	return (
 		<motion.div className="flex flex-col items-center justify-start w-full h-fit uppercase gap-4 px-4">
 			<motion.div
+				ref={topTaglineRef}
 				initial="hidden"
 				whileInView="visible"
 				viewport={{ once: true }}
@@ -31,7 +36,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 			>
 				<motion.h1
 					initial={{ y: 100 }}
-					animate={{ y: 0 }}
+					animate={{ y: topTaglineIsInView ? 0 : 100 }}
 					transition={{ duration: 1 }}
 					className={twMerge(
 						"text-4xl md:text-6xl text-primary text-center",
@@ -43,6 +48,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 			</motion.div>
 
 			<motion.div
+				ref={bottomTaglineRef}
 				initial="hidden"
 				whileInView="visible"
 				viewport={{ once: true }}
@@ -51,7 +57,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 				<motion.h1
 					initial={{ y: 100 }}
 					animate={{
-						y: 0,
+						y: bottomTaglineIsInView ? 0 : 100,
 					}}
 					viewport={{ once: true }}
 					transition={{ duration: 1 }}
@@ -96,7 +102,7 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 						opacity: 0, 
 						// y: 400 
 					}}
-					transition={{ duration: 1 }}
+					transition={{ duration: 1.5 }}
 				>
 					<Image
 						src={require("@/assets/images/section2.png")}
