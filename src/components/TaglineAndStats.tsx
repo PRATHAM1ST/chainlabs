@@ -76,7 +76,9 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 					label="MINT NOW"
 					className="text-lg md:text-xl"
 				/>
-				<h1>0.044 ETH</h1>
+				<h1>
+					<NumberCounter float from={0} to={0.044} /> ETH
+				</h1>
 			</div>
 
 			<Image

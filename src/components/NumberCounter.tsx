@@ -10,6 +10,7 @@ import { useRef } from "react";
 type NumberCounterProps = {
 	from: number;
 	to: number;
+	float?: boolean;
 	animationOptions?: KeyframeOptions;
 };
 
@@ -20,14 +21,16 @@ export default function NumberCounter(props: NumberCounterProps) {
 	useIsomorphicLayoutEffect(() => {
 		const element = ref.current;
 		if (!element) return;
-        if (!inView) return;
+		if (!inView) return;
 
 		const controls = animate(props.from, props.to, {
 			duration: 1.5,
 			ease: "easeInOut",
 			...props.animationOptions,
 			onUpdate(value) {
-				element.textContent = String(Math.floor(value));
+				element.textContent = String(
+					props.float ? value.toFixed(3) : Math.floor(value)
+				);
 			},
 		});
 
