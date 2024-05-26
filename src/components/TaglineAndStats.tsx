@@ -22,38 +22,38 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 	}
 
 	return (
-		<motion.div
-			animate={{
-				y: 0,
-			}}
-			initial={{
-				y: 100,
-			}}
-			transition={{
-				duration: 1,
-			}}
-			className="flex flex-col items-center justify-start w-full h-fit uppercase gap-4 px-4"
-		>
-			<motion.h1
-				initial={{ scale: 0 }}
-				whileInView={{ scale: 1 }}
-				transition={{ duration: 1 }}
-				className={twMerge(
-					"text-4xl md:text-6xl text-primary text-center",
-					OuterSansBlack.className
-				)}
-			>
-				fully 3D-ReADY Primobots
-			</motion.h1>
+		<motion.div className="flex flex-col items-center justify-start w-full h-fit uppercase gap-4 px-4">
 			<motion.div
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true }}
 				className="overflow-hidden"
-				whileInView={{
-					overflow: "visible",
-				}}
 			>
 				<motion.h1
 					initial={{ y: 100 }}
 					animate={{ y: 0 }}
+					transition={{ duration: 1 }}
+					className={twMerge(
+						"text-4xl md:text-6xl text-primary text-center",
+						OuterSansBlack.className
+					)}
+				>
+					fully 3D-ReADY Primobots
+				</motion.h1>
+			</motion.div>
+
+			<motion.div
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true }}
+				className="overflow-hidden"
+			>
+				<motion.h1
+					initial={{ y: 100 }}
+					animate={{
+						y: 0,
+					}}
+					viewport={{ once: true }}
 					transition={{ duration: 1 }}
 					className={twMerge(
 						"text-4xl md:text-6xl text-primary text-center",
@@ -81,13 +81,32 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 				</h1>
 			</div>
 
-			<Image
-				src={require("@/assets/images/section2.png")}
-				alt="primobots"
-				width={1980}
-				height={require("@/assets/images/section2.png").height}
-				className="w-full h-fit px-10"
-			/>
+			<motion.div
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ once: true }}
+				className="overflow-hidden"
+			>
+				<motion.span
+					whileInView={{
+						opacity: 1,
+						// y: 0,
+					}}
+					initial={{ 
+						opacity: 0, 
+						// y: 400 
+					}}
+					transition={{ duration: 1 }}
+				>
+					<Image
+						src={require("@/assets/images/section2.png")}
+						alt="primobots"
+						width={1980}
+						height={require("@/assets/images/section2.png").height}
+						className="w-full h-fit px-10"
+					/>
+				</motion.span>
+			</motion.div>
 		</motion.div>
 	);
 }

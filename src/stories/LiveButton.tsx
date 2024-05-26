@@ -46,7 +46,7 @@ export const Button = ({
 }: ButtonProps) => {
     const mode = primary
         ? 'text-primary-background bg-primary px-4 py-1'
-        : 'text-primary outline px-4 py-1';
+        : 'text-primary border border-primary border-2 px-4 py-1';
     const modeSize = size == 'small' ? 'text-sm' : size == 'medium' ? 'text-xl' : 'text-2xl';
     const modeSquare = square ? 'text-xl text-primary h-8 w-8 px-0 py-0 leading-4' : '';
   return (

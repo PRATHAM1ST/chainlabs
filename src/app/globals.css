@@ -34,7 +34,7 @@ body {
 
 @layer utilities {
 	.clip-pathing-header {
-		clip-path: polygon(0 0, 100% 0%, 97% 100%, 3% 100%);
+		/* clip-path: polygon(0 0, 100% 0%, 97% 100%, 3% 100%); */
 	}
 }
 @layer base {

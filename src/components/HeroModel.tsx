@@ -17,8 +17,8 @@ export default function HeroModel(props: HeroModelProps) {
 			<Canvas
 				camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}
 				onPointerMove={(e) => {
-					mouseX.set((e.clientX / 30) - 12);
-					mouseY.set((-e.clientY / 30) + 6);
+					mouseX.set((e.clientX / 30) - 23);
+					mouseY.set((-e.clientY / 30) + 12);
 				}}
 				onPointerUp={() => setModelClicked(false)}
 			>
@@ -34,7 +34,7 @@ export default function HeroModel(props: HeroModelProps) {
 				<motion.pointLight
 					intensity={1}
 					color={"white"}
-					position={[mouseX, mouseY, 0]}
+					position={[mouseX, mouseY, 2]}
 					castShadow={true}
 				/>
 				<motion.mesh
