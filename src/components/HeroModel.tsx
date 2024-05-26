@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, ScrollControls, useGLTF } from "@react-three/drei";
 import { Primobot } from "./Primobot";
 import { LayoutCamera, MotionCanvas, motion } from "framer-motion-3d";
 import { MotionConfig, useMotionValue } from "framer-motion";
@@ -16,12 +16,18 @@ export default function HeroModel(props: HeroModelProps) {
 			<Canvas
 				camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}
 				onPointerMove={(e) => {
-					mouseX.set(e.clientX / 1 - 23);
-					mouseY.set(-e.clientY / 1 + 12);
+					mouseX.set(e.clientX);
+					mouseY.set(e.clientY);
 				}}
 				onPointerUp={() => setModelClicked(false)}
+				unselectable="on"
+				style={{
+					touchAction: "none !important",
+					userSelect: "none",	
+					pointerEvents: "none",
+				}}
 			>
-				<OrbitControls enableZoom={false} enabled={modelClicked} />
+				<OrbitControls enableZoom={true} enabled={modelClicked} />
 				{/* <motion.pointLight
 					whileHover={{
 						x: mouseX.get(),

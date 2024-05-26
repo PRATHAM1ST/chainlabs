@@ -11,7 +11,7 @@ export default function StoryBehind() {
 	const imagesRefArray = useRef<any>({});
 
 	return (
-		<div className="bg-primary flex flex-col" id="story">
+		<div className="bg-primary flex flex-col overflow-hidden" id="story">
 			<div className="flex flex-col lg:flex-row p-2">
 				<div className="grid grid-cols-3 h-fit lg:w-[40%] gap-2">
 					{images.map((_, i) => (
@@ -40,7 +40,7 @@ export default function StoryBehind() {
 					))}
 				</div>
 				<div className="p-4 lg:w-[60%] lg:p-16">
-					<h1 className="text-6xl font-bold text-white uppercase">
+					<h1 className="text-4xl lg:text-6xl font-bold text-white uppercase">
 						Here’s The story behind primobots.
 					</h1>
 					<div className="flex flex-col gap-6 pt-6">

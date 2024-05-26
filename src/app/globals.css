@@ -46,3 +46,22 @@ body {
     font-display: swap;
 	}
 }
+
+
+canvas {
+  position: relative;
+  /* Other styling */
+}
+
+/* Overlay */
+
+canvas::after {
+  content:"";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+}
