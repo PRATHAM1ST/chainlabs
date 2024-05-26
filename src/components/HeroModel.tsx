@@ -12,7 +12,7 @@ export default function HeroModel(props: HeroModelProps) {
 	const [modelClicked, setModelClicked] = useState(false);
 	const [mouseX, mouseY] = [useMotionValue(0), useMotionValue(0)];
 	return (
-		<div className="w-full h-[80vh]">
+		<div className="w-full h-[80vh] z-0 relative">
 			<Canvas
 				camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}
 				onPointerMove={(e) => {
@@ -22,6 +22,10 @@ export default function HeroModel(props: HeroModelProps) {
 				onPointerUp={() => setModelClicked(false)}
 				unselectable="on"
 				style={{
+					position: "fixed",
+					top: 0,
+					left: 0,
+					zIndex: -1,
 					touchAction: "none !important",
 					userSelect: "none",	
 					pointerEvents: "none",

@@ -91,6 +91,7 @@ export default function Header(props: HeaderProps) {
 								key={link.label}
 								initial={{ y: -100 }}
 								animate={{ y: 0 }}
+								whileInView={{ y: 0 }}
 								transition={{
 									duration: 0.5,
 									delay: 1.5 + index * 0.1,

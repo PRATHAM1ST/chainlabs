@@ -59,7 +59,18 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 
 	// console.log('progress', 0.445 + progress);
 	return (
-		<group {...props} dispose={null}>
+		// ignore next line ts
+		// @ts-ignore: Unreachable code error
+		<motion.group
+			{...props}
+			dispose={null}
+			animate={{
+				x: progress * 20,
+				y: progress - 2,
+				z: progress + 0,
+				rotateY: progress * 180,
+			}}
+		>
 			<motion.directionalLight
 				intensity={5}
 				position={[-7.163, 10, 7.5]}
@@ -81,7 +92,8 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				}}
 				animate={{
 					x: 0,
-					y: progress + 0.445,
+					// y: progress + 0.445,
+					y: 0.445,
 					z: 0.001,
 				}}
 				transition={{
@@ -111,7 +123,7 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 					y: progress + 0.505,
 					z: -0.013,
 					rotateY: progress * 30,
-					scale: progress + 0.082,
+					scale: progress / 10 + 0.082,
 				}}
 				transition={{
 					duration: initialProgressDone ? 0.25 : 1,
@@ -138,7 +150,8 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				animate={{
 					x: 0,
 					y: 0.353,
-					z: progress + 0.115,
+					// z: progress + 0.115,
+					z:  0.115,
 				}}
 				transition={{
 					duration: initialProgressDone ? 0.25 : 1,
@@ -164,7 +177,8 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				}}
 				animate={{
 					x: 0,
-					y: -progress + 0.445,
+					// y: -progress + 0.445,
+					y: 0.445,
 					z: 0.001,
 				}}
 				transition={{
@@ -184,7 +198,8 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				animate={{
 					x: -0.001,
 					y: 0.418,
-					z: progress + 0.092,
+					// z: progress + 0.092,
+					z: 0.092,
 				}}
 				transition={{
 					duration: initialProgressDone ? 0.25 : 1,
@@ -195,7 +210,7 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				rotation={[-0.041, 0, 3.137]}
 				scale={[0.021, 0.005, 0.005]}
 			/>
-		</group>
+		</motion.group>
 	);
 }
 
