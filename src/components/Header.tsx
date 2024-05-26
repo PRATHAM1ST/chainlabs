@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type HeaderProps = {};
+type HeaderProps = {
+	links: {
+		href: string;
+		label: string;
+	}[];
+};
 
 export default function Header(props: HeaderProps) {
 	return (
@@ -22,11 +27,11 @@ export default function Header(props: HeaderProps) {
 			</div>
 
 			<div className="flex justify-center items-center gap-6">
-				<Link href="/">STORY</Link>
-				<Link href="/">UTILITY</Link>
-				<Link href="/">ROADMAP</Link>
-				<Link href="/">TEAM</Link>
-				<Link href="/">FAQ</Link>
+				{props.links.map((link) => (
+					<Link key={link.label} href={link.href}>
+						{link.label}
+					</Link>
+				))}
 				<Image
 					src={require("@/assets/social.svg")}
 					alt="Social"

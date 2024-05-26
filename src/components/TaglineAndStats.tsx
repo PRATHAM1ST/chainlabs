@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { OuterSansOutline } from "../app/fonts";
 import { useState } from "react";
+import { Button } from "@/stories/LiveButton";
 
 type TaglineAndStatsProps = {};
 
@@ -20,25 +21,24 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 			<div className="flex gap-6 justify-center items-center">
 				<h1>555/5555 MINTED</h1>
 				<div className="flex gap-4 justify-center items-center">
-					<button
+					<Button
 						onClick={() => setCounter(counter ? counter - 1 : 0)}
-						className="text-xl text-primary outline h-8 w-8 leading-4"
-					>
-						-
-					</button>
+						square
+						label="-"
+					/>
 					<h1 className="text-xl text-primary w-6 text-center">
 						{counter}
 					</h1>
-					<button
+					<Button
 						onClick={() => setCounter(counter + 1)}
-						className="text-xl text-primary outline h-8 w-8 leading-4"
-					>
-						+
-					</button>
+						square
+						label="+"
+					/>
 				</div>
-				<button className="text-xl text-primary-background bg-primary px-4 py-1">
-					MINT NOW
-				</button>
+				<Button 
+					primary
+					label="MINT NOW"
+				/>
 				<h1>0.044 ETH</h1>
 			</div>
 

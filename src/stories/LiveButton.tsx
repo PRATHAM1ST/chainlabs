@@ -1,5 +1,4 @@
 import React from 'react';
-import './button.css';
 
 interface ButtonProps {
   /**
@@ -19,6 +18,10 @@ interface ButtonProps {
    */
   label: string;
   /**
+   * Square button
+   */
+  square?: boolean;
+  /**
    * Optional click handler
    */
   onClick?: () => void;
@@ -32,21 +35,21 @@ export const Button = ({
   size = 'medium',
   backgroundColor,
   label,
+  square = false,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+    const mode = primary
+        ? 'text-primary-background bg-primary px-4 py-1'
+        : 'text-primary outline px-4 py-1';
+    const modeSize = size == 'small' ? 'text-sm' : size == 'medium' ? 'text-xl' : 'text-2xl';
+    const modeSquare = square ? 'text-xl text-primary h-8 w-8 px-0 py-0 leading-4' : '';
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={[modeSize, mode, modeSquare].join(' ')}
       {...props}
     >
       {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
     </button>
   );
 };
