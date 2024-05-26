@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Primobot } from "./Primobot";
-import { motion } from "framer-motion-3d";
-import { useMotionValue } from "framer-motion";
+import { LayoutCamera, MotionCanvas, motion } from "framer-motion-3d";
+import { MotionConfig, useMotionValue } from "framer-motion";
 
 type HeroModelProps = {};
 
@@ -17,8 +17,8 @@ export default function HeroModel(props: HeroModelProps) {
 			<Canvas
 				camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}
 				onPointerMove={(e) => {
-					mouseX.set((e.clientX / 30) - 23);
-					mouseY.set((-e.clientY / 30) + 12);
+					mouseX.set(e.clientX / 30 - 23);
+					mouseY.set(-e.clientY / 30 + 12);
 				}}
 				onPointerUp={() => setModelClicked(false)}
 			>
