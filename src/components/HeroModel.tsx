@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Primobot } from "./Primobot";
@@ -7,10 +7,11 @@ import { Primobot } from "./Primobot";
 type HeroModelProps = {};
 
 export default function HeroModel(props: HeroModelProps) {
+	const [modelHovered, setModelHovered] = useState(false);
 	return (
 		<div className="w-full h-[80vh]">
-			<Canvas camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }}>
-				<OrbitControls enableZoom={false} />
+			<Canvas camera={{ fov: 45, zoom: 1.5, near: 1.3, far: 100 }} onPointerUp={() => setModelHovered(false)}>
+				<OrbitControls enableZoom={false} enabled={modelHovered} />
 				<ambientLight intensity={0.5} />
 				{/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
 			<pointLight position={[-10, -10, -10]} /> */}
@@ -20,7 +21,12 @@ export default function HeroModel(props: HeroModelProps) {
 						scale={4.5}
 						position={[0, -2, 0]}
 					/> */}
-					<Primobot scale={4.5} position={[0, -2, 0]} />
+					<Primobot
+						scale={4.5}
+						position={[0, -2, 0]}
+						onClick={() => setModelHovered(true)}
+						onPointerUp={() => setModelHovered(false)}
+					/>
 				</mesh>
 			</Canvas>
 		</div>
