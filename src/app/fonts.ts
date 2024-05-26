@@ -1,4 +1,4 @@
-// import { Inter, Oooh_Baby } from 'next/font/google'
+import { Sora } from "next/font/google";
 import localFont from "next/font/local";
 
 export const OuterSans = localFont({
@@ -66,5 +66,5 @@ export const OuterSansLightOutline = localFont({
 // 	weight: "400",
 // });
 
-// export const inter = Inter({ subsets: ['latin'] })
+export const sora = Sora({ subsets: ["latin"] });
 // export const oooh_baby = Oooh_Baby({ subsets: ['latin'], weight: "400" })
