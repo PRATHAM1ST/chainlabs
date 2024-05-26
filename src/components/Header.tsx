@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { delay, motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -22,7 +22,9 @@ export default function Header(props: HeaderProps) {
 			<motion.header
 				animate={{
 					y: isInView ? 0 : -110,
-					clipPath: isInView ? "polygon(0 0, 100% 0%, 97% 100%, 3% 100%)" : "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+					clipPath: isInView
+						? "polygon(0 0, 100% 0%, 97% 100%, 3% 100%)"
+						: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
 				}}
 				initial={{
 					y: -110,
@@ -35,29 +37,35 @@ export default function Header(props: HeaderProps) {
 				className="max-w-[1154px] p-8 px-16 mx-auto bg-primary text-primary-background flex justify-between items-center flex-wrap clip-pathing-header"
 			>
 				<motion.div
-					initial={{ position: "absolute", left: "50%", x: "-50%" }}
+					initial={{
+						position: "absolute",
+						left: "50%",
+						x: "-50%",
+					}}
 					animate={{
 						position: "relative",
 						left: "0",
 						x: 0,
 					}}
 					transition={{ duration: 1, delay: 1 }}
-					className="flex gap-2"
+					
 				>
-					<Image
-						src={require("@/assets/logo.svg")}
-						alt="Logo"
-						width={30}
-						height={30}
-					/>
-					<Image
-						src={require("@/assets/logo-text.svg")}
-						alt="Logo"
-						width={100}
-						height={50}
-					/>
-				</motion.div>
+					<Link href="/" className="flex gap-2">
+						<Image
+							src={require("@/assets/logo.svg")}
+							alt="Logo"
+							width={30}
+							height={30}
+						/>
 
+						<Image
+							src={require("@/assets/logo-text.svg")}
+							alt="Logo"
+							width={100}
+							height={50}
+						/>
+					</Link>
+				</motion.div>
 				<div
 					className="flex md:hidden"
 					onClick={() => setMobileMenu(!mobileMenu)}
@@ -78,65 +86,71 @@ export default function Header(props: HeaderProps) {
 					)}
 				>
 					{props.links.map((link, index) => (
+						<Link key={link.label} href={link.href}>
+							<motion.div
+								key={link.label}
+								initial={{ y: -100 }}
+								animate={{ y: 0 }}
+								transition={{
+									duration: 0.5,
+									delay: 1.5 + index * 0.1,
+								}}
+							>
+								{link.label}
+							</motion.div>
+						</Link>
+					))}
+					<Link href="/">
 						<motion.div
-							key={link.label}
 							initial={{ y: -100 }}
 							animate={{ y: 0 }}
 							transition={{
 								duration: 0.5,
-								delay: 1.5 + index * 0.1,
+								delay: 1.5 + props.links.length * 0.1,
 							}}
 						>
-							<Link key={link.label} href={link.href}>
-								{link.label}
-							</Link>
+							<Image
+								src={require("@/assets/social.svg")}
+								alt="Social"
+								width={20}
+								height={20}
+							/>
 						</motion.div>
-					))}
-					<motion.div
-						initial={{ y: -100 }}
-						animate={{ y: 0 }}
-						transition={{
-							duration: 0.5,
-							delay: 1.5 + props.links.length * 0.1,
-						}}
-					>
-						<Image
-							src={require("@/assets/social.svg")}
-							alt="Social"
-							width={20}
-							height={20}
-						/>
-					</motion.div>
-					<motion.div
-						initial={{ y: -100 }}
-						animate={{ y: 0 }}
-						transition={{
-							duration: 0.5,
-							delay: 1.5 + (props.links.length + 1) * 0.1,
-						}}
-					>
-						<Image
-							src={require("@/assets/twitter.svg")}
-							alt="Social"
-							width={20}
-							height={20}
-						/>
-					</motion.div>
-					<motion.div
-						initial={{ y: -100 }}
-						animate={{ y: 0 }}
-						transition={{
-							duration: 0.5,
-							delay: 1.5 + (props.links.length + 2) * 0.1,
-						}}
-					>
-						<Image
-							src={require("@/assets/instagram.svg")}
-							alt="Social"
-							width={20}
-							height={20}
-						/>
-					</motion.div>
+					</Link>
+					<Link href="/">
+						<motion.div
+							initial={{ y: -100 }}
+							animate={{ y: 0 }}
+							transition={{
+								duration: 0.5,
+								delay: 1.5 + (props.links.length + 1) * 0.1,
+							}}
+						>
+							<Image
+								src={require("@/assets/twitter.svg")}
+								alt="Social"
+								width={20}
+								height={20}
+							/>
+						</motion.div>
+					</Link>
+					<Link href="/">
+						<motion.div
+							initial={{ y: -100 }}
+							animate={{ y: 0 }}
+							transition={{
+								duration: 0.5,
+								delay: 1.5 + (props.links.length + 2) * 0.1,
+							}}
+						>
+							<Image
+								src={require("@/assets/instagram.svg")}
+								alt="Social"
+								width={20}
+								height={20}
+							/>
+						</motion.div>
+					</Link>
 				</div>
 			</motion.header>
 		</motion.div>

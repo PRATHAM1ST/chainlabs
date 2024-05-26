@@ -5,13 +5,15 @@ import {
 	useInView,
 	useIsomorphicLayoutEffect,
 } from "framer-motion";
-import { useRef } from "react";
+import { Dispatch, SetStateAction, useRef } from "react";
 
 type NumberCounterProps = {
 	from: number;
 	to: number;
 	float?: boolean;
 	animationOptions?: KeyframeOptions;
+	currentCount?: number;
+	setCurrentCount?: Dispatch<SetStateAction<number>>;
 };
 
 export default function NumberCounter(props: NumberCounterProps) {
@@ -32,6 +34,11 @@ export default function NumberCounter(props: NumberCounterProps) {
 					props.float ? value.toFixed(3) : Math.floor(value)
 				);
 			},
+			onComplete() {
+				if (props.setCurrentCount) {
+					props.setCurrentCount(props.to);
+				}
+			}
 		});
 
 		return controls.stop;

@@ -1,12 +1,16 @@
 "use client";
 import { Button } from "@/stories/LiveButton";
-import { useSpring, motion, MotionValue, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useSpring, motion, MotionValue, useTransform, motionValue } from "framer-motion";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-type CounterProps = {};
+type CounterProps = {
+	count: number;
+	setCount: Dispatch<SetStateAction<number>>;
+	minValue?: number;
+};
 
 export default function Counter(props: CounterProps) {
-	const [count, setCount] = useState(0);
+	const { count, setCount } = props;
 	const a = Array.from({ length: 11 }, (_, i) => count - 5 + i + 1);
 	const animatedValue = useSpring(count);
 
@@ -16,7 +20,8 @@ export default function Counter(props: CounterProps) {
 	}
 
 	function handleDecrement() {
-		if (count === 0) return;
+		if (count === 0 && !props.minValue) return;
+		if (props.minValue && count <= props.minValue) return;
 		setCount(count - 1);
 		animatedValue.set(count - 1);
 	}

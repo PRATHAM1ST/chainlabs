@@ -11,7 +11,7 @@ export default function Home() {
 			<main className="bg-primary-background">
 				<Header
 					links={[
-						{ href: "/", label: "STORY" },
+						{ href: "#story", label: "STORY" },
 						{ href: "/", label: "UTILITY" },
 						{ href: "/", label: "ROADMAP" },
 						{ href: "/", label: "TEAM" },

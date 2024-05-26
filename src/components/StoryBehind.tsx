@@ -11,7 +11,7 @@ export default function StoryBehind() {
 	const imagesRefArray = useRef<any>({});
 
 	return (
-		<div className="bg-primary flex flex-col">
+		<div className="bg-primary flex flex-col" id="story">
 			<div className="flex p-2">
 				<div className="grid grid-cols-3 w-[40%] gap-2">
 					{images.map((_, i) => (

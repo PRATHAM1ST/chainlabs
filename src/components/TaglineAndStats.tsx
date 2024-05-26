@@ -15,15 +15,12 @@ import NumberCounter from "./NumberCounter";
 type TaglineAndStatsProps = {};
 
 export default function TaglineAndStats(props: TaglineAndStatsProps) {
-	const [counter, setCounter] = useState(0);
+	const [count, setCount] = useState(1);
+	const [eth, setEth] = useState(0);
 	const topTaglineRef = useRef<HTMLHeadingElement>(null);
 	const bottomTaglineRef = useRef<HTMLHeadingElement>(null);
 	const topTaglineIsInView = useInView(topTaglineRef);
 	const bottomTaglineIsInView = useInView(bottomTaglineRef);
-
-	function handleCounterIncrement() {
-		setCounter(counter + 1);
-	}
 
 	return (
 		<motion.div className="flex flex-col items-center justify-start w-full h-fit uppercase gap-4 px-4">
@@ -75,15 +72,21 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 					/5555 MINTED
 				</h1>
 				<div className="flex gap-4 justify-center items-center relative h-8">
-					<Counter />
+					<Counter setCount={setCount} count={count} minValue={1} />
 				</div>
 				<Button
 					primary
 					label="MINT NOW"
 					className="text-lg md:text-xl"
 				/>
-				<h1>
-					<NumberCounter float from={0} to={0.044} /> ETH
+				<h1 className="w-32">
+					<NumberCounter
+						float
+						from={eth}
+						setCurrentCount={setEth}
+						to={0.044 * count}
+					/>{" "}
+					ETH
 				</h1>
 			</div>
 
@@ -98,9 +101,9 @@ export default function TaglineAndStats(props: TaglineAndStatsProps) {
 						opacity: 1,
 						// y: 0,
 					}}
-					initial={{ 
-						opacity: 0, 
-						// y: 400 
+					initial={{
+						opacity: 0,
+						// y: 400
 					}}
 					transition={{ duration: 1.5 }}
 				>
