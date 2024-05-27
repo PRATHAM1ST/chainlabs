@@ -61,10 +61,4 @@ export const OuterSansLightOutline = localFont({
 	variable: "--font-outer-sans-light",
 });
 
-// export const gotham = localFont({
-// 	src: "../Assets/gotham.otf",
-// 	weight: "400",
-// });
-
 export const sora = Sora({ subsets: ["latin"] });
-// export const oooh_baby = Oooh_Baby({ subsets: ['latin'], weight: "400" })

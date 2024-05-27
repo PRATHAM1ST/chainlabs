@@ -3,8 +3,8 @@
 import { OuterSansBlack, sora } from "@/app/fonts";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { useRef } from "react";
 
 export default function StoryBehind() {
 	const images = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -96,7 +96,7 @@ export default function StoryBehind() {
 			</div>
 			<div className="flex flex-col gap-6 p-4 lg:p-16 pb-16 lg:pb-48 relative overflow-hidden z-0">
 				<Image
-					src={require(`@/assets/logo.svg`)}
+					src={require(`@/assets/svgs/logo.svg`)}
 					alt="Primobots Logo"
 					className="fill-secondary absolute right-0 top-0 translate-x-[25%] opacity-25 lg:opacity-100 -z-10"
 					height={300}

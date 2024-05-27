@@ -1,16 +1,12 @@
 "use client";
 import Image from "next/image";
-import {
-	OuterSansBlack,
-	OuterSansBlackOutline,
-	OuterSansOutline,
-} from "../app/fonts";
+import { OuterSansBlack, OuterSansBlackOutline } from "../fonts";
 import { useRef, useState } from "react";
 import { Button } from "@/stories/LiveButton";
 import { twMerge } from "tailwind-merge";
 import { motion, useInView } from "framer-motion";
-import Counter from "./Counter";
-import NumberCounter from "./NumberCounter";
+import Counter from "../../components/Counter";
+import NumberCounter from "../../components/NumberCounter";
 
 type TaglineAndStatsProps = {};
 

@@ -1,8 +1,8 @@
 "use client";
 import Header from "@/components/Header";
-import HeroModel from "@/components/HeroModel";
-import StoryBehind from "@/components/StoryBehind";
-import TaglineAndStats from "@/components/TaglineAndStats";
+import HeroModel from "./sections/HeroModel";
+import StoryBehind from "./sections/StoryBehind";
+import TaglineAndStats from "./sections/TaglineAndStats";
 import { ReactLenis } from "@studio-freight/react-lenis";
 
 export default function Home() {

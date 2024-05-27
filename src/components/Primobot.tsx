@@ -45,25 +45,10 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 	const [initialProgressDone, setInitialProgressDone] = useState(false);
 	scroll((progress) => setProgress(progress / 10));
 
-	// const [mouseX, mouseY] = [useMotionValue(0), useMotionValue(0)];
-
-	// useEffect(() => {
-	// 	document.body.addEventListener("mousemove", (e) => {
-	// 		const mouseXValue = (e.clientX / window.innerWidth) * 4;
-	// 		const mouseYValue = (e.clientY / window.innerHeight) * -4;
-	// 		mouseX.set(mouseXValue > -mouseYValue ? mouseXValue - mouseYValue : mouseXValue + mouseYValue);
-	// 		mouseY.set(mouseYValue < 0.5 ? mouseYValue : -mouseYValue);
-	// 		console.log('mouseX', mouseX.get(), 'mouseY', mouseY.get());
-	// 	});
-	// }, []);
-
-	console.log("progress", progress);
-
 	const handleRotate = (progress: number) => {
 		if (progress < 0.05) {
 			return progress * 130;
 		}
-		// else if (progress < 0.3){}
 		return progress * 180;
 	};
 
@@ -71,11 +56,6 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 		if (progress < 0.05) {
 			return progress * 40;
 		}
-		// else if (progress >= 0.02 && progress < 0.03){
-		// 	console.log('progress X', x - progress * 50, "x" , x,);
-		// 	x = x - progress * 50;
-		// 	return x;
-		// }
 		return 0.05 * 40;
 	};
 

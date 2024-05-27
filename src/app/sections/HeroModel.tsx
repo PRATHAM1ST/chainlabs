@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, ScrollControls, useGLTF } from "@react-three/drei";
-import { Primobot } from "./Primobot";
-import { LayoutCamera, MotionCanvas, motion } from "framer-motion-3d";
-import { MotionConfig, useMotionValue } from "framer-motion";
+import { OrbitControls } from "@react-three/drei";
+import { Primobot } from "../../components/Primobot";
+import { motion } from "framer-motion-3d";
+import { useMotionValue } from "framer-motion";
 
 type HeroModelProps = {};
 
@@ -27,7 +27,7 @@ export default function HeroModel(props: HeroModelProps) {
 					left: 0,
 					zIndex: -1,
 					touchAction: "none !important",
-					userSelect: "none",	
+					userSelect: "none",
 					pointerEvents: "none",
 				}}
 			>

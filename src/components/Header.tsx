@@ -1,6 +1,6 @@
 "use client";
 
-import { delay, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -34,7 +34,7 @@ export default function Header(props: HeaderProps) {
 					duration: 0.5,
 					clipPath: { delay: 1, duration: 1 },
 				}}
-				className="max-w-[1154px] p-8  px-4 lg:px-16 mx-auto bg-primary text-primary-background flex justify-between items-center flex-wrap clip-pathing-header"
+				className="max-w-[1154px] p-8  px-4 md:px-16 mx-auto bg-primary text-primary-background flex justify-between items-center flex-wrap clip-pathing-header"
 			>
 				<motion.div
 					initial={{
@@ -51,14 +51,14 @@ export default function Header(props: HeaderProps) {
 				>
 					<Link href="/" className="flex gap-2">
 						<Image
-							src={require("@/assets/logo.svg")}
+							src={require("@/assets/svgs/logo.svg")}
 							alt="Logo"
 							width={30}
 							height={30}
 						/>
 
 						<Image
-							src={require("@/assets/logo-text.svg")}
+							src={require("@/assets/svgs/logo-text.svg")}
 							alt="Logo"
 							width={100}
 							height={50}
@@ -76,13 +76,12 @@ export default function Header(props: HeaderProps) {
 					className="flex md:hidden uppercase"
 					onClick={() => setMobileMenu(!mobileMenu)}
 				>
-					{/* <Image
-						src={require("@/assets/menu.svg")}
+					<Image
+						src={require("@/assets/svgs/hamburger.svg")}
 						alt="Menu"
-						width={20}
-						height={20}
-					/> */}
-					menu
+						width={30}
+						height={30}
+					/>
 				</motion.div>
 
 				<div
@@ -117,7 +116,7 @@ export default function Header(props: HeaderProps) {
 							}}
 						>
 							<Image
-								src={require("@/assets/social.svg")}
+								src={require("@/assets/svgs/social.svg")}
 								alt="Social"
 								width={20}
 								height={20}
@@ -134,7 +133,7 @@ export default function Header(props: HeaderProps) {
 							}}
 						>
 							<Image
-								src={require("@/assets/twitter.svg")}
+								src={require("@/assets/svgs/twitter.svg")}
 								alt="Social"
 								width={20}
 								height={20}
@@ -151,7 +150,7 @@ export default function Header(props: HeaderProps) {
 							}}
 						>
 							<Image
-								src={require("@/assets/instagram.svg")}
+								src={require("@/assets/svgs/instagram.svg")}
 								alt="Social"
 								width={20}
 								height={20}

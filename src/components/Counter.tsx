@@ -1,6 +1,11 @@
 "use client";
 import { Button } from "@/stories/LiveButton";
-import { useSpring, motion, MotionValue, useTransform, motionValue } from "framer-motion";
+import {
+	useSpring,
+	motion,
+	MotionValue,
+	useTransform,
+} from "framer-motion";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 type CounterProps = {
@@ -11,7 +16,10 @@ type CounterProps = {
 
 export default function Counter(props: CounterProps) {
 	const { count, setCount } = props;
-	const a = Array.from({ length: 11 }, (_, i) => count - 5 + i + 1);
+	const arrayOfNumbers = Array.from(
+		{ length: 11 },
+		(_, i) => count - 5 + i + 1
+	);
 	const animatedValue = useSpring(count);
 
 	function handleIncrement() {
@@ -34,7 +42,7 @@ export default function Counter(props: CounterProps) {
 		<>
 			<Button onClick={handleDecrement} label="-" square />
 			<div className="relative overflow-hidden flex flex-col justify-center items-center h-8 w-8">
-				{a.map((num) => (
+				{arrayOfNumbers.map((num) => (
 					<Count num={num} mv={animatedValue} key={num} />
 				))}
 			</div>
