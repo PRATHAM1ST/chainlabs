@@ -6,7 +6,24 @@ import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
+function splitStringusingRegex(inputstring: string): string[] {
+	const characters: string[] = [];
+	const regex = /[\s\S]/gu;
+
+	let match;
+	while ((match = regex.exec(inputstring)) !== null) {
+		if (match[0]) {
+			characters.push(match[0]);
+		}
+	}
+	return characters;
+}
+
 export default function StoryBehind() {
+	const headingOfSection = splitStringusingRegex(
+		"Here’s The story behind primobots."
+	);
+
 	const images = Array.from({ length: 12 }, (_, i) => i + 1);
 	const imagesRefArray = useRef<any>({});
 
@@ -23,7 +40,15 @@ export default function StoryBehind() {
 							}}
 						>
 							<motion.div
-								initial="hidden"
+								initial={{
+									scale: 0,
+									opacity: 0,
+								}}
+								whileInView={{
+									scale: 1,
+									opacity: 1,
+								}}
+								viewport={{ once: true }}
 								transition={{ duration: 1 }}
 							>
 								<Image
@@ -40,11 +65,37 @@ export default function StoryBehind() {
 					))}
 				</div>
 				<div className="p-4 lg:w-[60%] lg:p-16">
-					<h1 className="text-4xl lg:text-6xl font-bold text-white uppercase">
-						Here’s The story behind primobots.
-					</h1>
-					<div className="flex flex-col gap-6 pt-6">
-						<div className="flex gap-[80px]">
+					<motion.h1 className="text-4xl lg:text-6xl font-bold text-white uppercase">
+						{
+							// Splitting the string into characters
+							headingOfSection.map((char, index) => (
+								<motion.span
+									key={index}
+									initial={{ opacity: 0, y: 100 }}
+									viewport={{ once: true }}
+									whileInView={{ opacity: 1, y: 0 }}
+									transition={{
+										duration: 1,
+										delay: index * 0.1,
+									}}
+									className={twMerge(
+										"text-4xl lg:text-6xl font-bold text-white uppercase",
+										OuterSansBlack.className
+									)}
+								>
+									{char}
+								</motion.span>
+							))
+						}
+						{/* Here’s The story behind primobots. */}
+					</motion.h1>
+					<motion.div className="flex flex-col gap-6 pt-6">
+						<motion.div
+							initial={{ opacity: 0, y: 100 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 1 }}
+							className="flex gap-[80px]"
+						>
 							<h3
 								className={twMerge(
 									"text-white text-3xl",
@@ -66,8 +117,13 @@ export default function StoryBehind() {
 								were intended to protect families and make their
 								lives at home easier.
 							</p>
-						</div>
-						<div className="flex gap-[80px]">
+						</motion.div>
+						<motion.div
+							initial={{ opacity: 0, y: 100 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 1 }}
+							className="flex gap-[80px]"
+						>
 							<h3
 								className={twMerge(
 									"text-white text-3xl",
@@ -90,8 +146,8 @@ export default function StoryBehind() {
 								Sci bought their tech and signed a royalty deal
 								with the two creators.
 							</p>
-						</div>
-					</div>
+						</motion.div>
+					</motion.div>
 				</div>
 			</div>
 			<div className="flex flex-col gap-6 p-4 lg:p-16 pb-16 lg:pb-48 relative overflow-hidden z-0">
