@@ -2,11 +2,11 @@
 import Image from "next/image";
 import { OuterSansBlack, OuterSansBlackOutline } from "../fonts";
 import { useRef, useState } from "react";
-import { Button } from "@/stories/LiveButton";
+import { Button } from "@/components/Button";
 import { twMerge } from "tailwind-merge";
 import { motion, useInView } from "framer-motion";
-import Counter from "../../components/Counter";
-import NumberCounter from "../../components/NumberCounter";
+import Counter from "../../components/UserControllableCounter";
+import NumberCounter from "../../components/AutomaticNumberCounter";
 
 type TaglineAndStatsProps = {};
 

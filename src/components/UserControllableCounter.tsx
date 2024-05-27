@@ -1,5 +1,6 @@
 "use client";
-import { Button } from "@/stories/LiveButton";
+import { OuterSans } from "@/app/fonts";
+import { Button } from "@/components/Button";
 import {
 	useSpring,
 	motion,
@@ -7,6 +8,7 @@ import {
 	useTransform,
 } from "framer-motion";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 type CounterProps = {
 	count: number;
@@ -57,7 +59,7 @@ function Count({ num, mv }: { num: number; mv: MotionValue }) {
 		<motion.span
 			style={{ y }}
 			key={num}
-			className="absolute inset-0 w-8 h-8 text-center leading-8"
+			className={twMerge("absolute inset-0 w-8 h-8 text-center leading-8", OuterSans.className)}
 		>
 			{num}
 		</motion.span>

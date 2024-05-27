@@ -1,4 +1,5 @@
 "use client";
+import { OuterSans } from "@/app/fonts";
 import {
 	KeyframeOptions,
 	animate,
@@ -6,6 +7,7 @@ import {
 	useIsomorphicLayoutEffect,
 } from "framer-motion";
 import { Dispatch, SetStateAction, useRef } from "react";
+import { twMerge } from "tailwind-merge";
 
 type NumberCounterProps = {
 	from: number;
@@ -14,6 +16,7 @@ type NumberCounterProps = {
 	animationOptions?: KeyframeOptions;
 	currentCount?: number;
 	setCurrentCount?: Dispatch<SetStateAction<number>>;
+	classNames?: string;
 };
 
 export default function NumberCounter(props: NumberCounterProps) {
@@ -44,5 +47,5 @@ export default function NumberCounter(props: NumberCounterProps) {
 		return controls.stop;
 	}, [props.from, props.to, props.animationOptions, inView, ref]);
 
-	return <span ref={ref} />;
+	return <span className={twMerge(OuterSans.className, props.classNames)} ref={ref} />;
 }

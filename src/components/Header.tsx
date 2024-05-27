@@ -1,5 +1,6 @@
 "use client";
 
+import { OuterSans } from "@/app/fonts";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +19,7 @@ export default function Header(props: HeaderProps) {
 	const ref = useRef<HTMLDivElement>(null);
 	const isInView = useInView(ref);
 	return (
-		<motion.div className="overflow-hidden" ref={ref}>
+		<motion.div className={twMerge("overflow-hidden", OuterSans.className)} ref={ref}>
 			<motion.header
 				animate={{
 					y: isInView ? 0 : -110,

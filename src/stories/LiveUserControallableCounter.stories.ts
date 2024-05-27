@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import Header from "@/components/NumberCounter";
+import Header from "@/components/UserControllableCounter";
 
 const meta = {
-	title: "Live/NumberCounter",
+	title: "Live/User Controllable Counter",
 	component: Header,
 	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 	tags: ["autodocs"],
@@ -19,7 +19,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
 	args: {
-		from: 1,
-        to: 100,
+		count: 1,
+		setCount: fn((prev) => {
+            return prev;
+		}),
 	},
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import { OuterSans } from "@/app/fonts";
 
 interface ButtonProps {
 	/**
@@ -58,7 +59,7 @@ export const Button = ({
 			whileHover={{ scale: 1.1 }}
 			whileTap={{ scale: 1 }}
 			type="button"
-			className={twMerge(modeSize, mode, modeSquare, className)}
+			className={twMerge(modeSize, mode, modeSquare, OuterSans.className, className)}
 			{...props}
 		>
 			{label}
