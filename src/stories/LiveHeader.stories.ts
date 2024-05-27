@@ -29,3 +29,20 @@ export const Base: Story = {
     ],
   },
 };
+
+export const Mobile: Story = {
+  args: {
+    links: [
+        { href: '/', label: 'STORY' },
+        { href: '/', label: 'UTILITY' },
+        { href: '/', label: 'ROADMAP' },
+        { href: '/', label: 'TEAM' },
+        { href: '/', label: 'FAQ' },
+    ],
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
+};

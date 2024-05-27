@@ -34,7 +34,7 @@ export default function Header(props: HeaderProps) {
 					duration: 0.5,
 					clipPath: { delay: 1, duration: 1 },
 				}}
-				className="max-w-[1154px] p-8 px-16 mx-auto bg-primary text-primary-background flex justify-between items-center flex-wrap clip-pathing-header"
+				className="max-w-[1154px] p-8  px-4 lg:px-16 mx-auto bg-primary text-primary-background flex justify-between items-center flex-wrap clip-pathing-header"
 			>
 				<motion.div
 					initial={{
@@ -48,7 +48,6 @@ export default function Header(props: HeaderProps) {
 						x: 0,
 					}}
 					transition={{ duration: 1, delay: 1 }}
-					
 				>
 					<Link href="/" className="flex gap-2">
 						<Image
@@ -66,8 +65,15 @@ export default function Header(props: HeaderProps) {
 						/>
 					</Link>
 				</motion.div>
-				<div
-					className="flex md:hidden"
+				<motion.div
+					initial={{ y: -100 }}
+					animate={{ y: 0 }}
+					whileInView={{ y: 0 }}
+					transition={{
+						duration: 0.5,
+						delay: 1.5,
+					}}
+					className="flex md:hidden uppercase"
 					onClick={() => setMobileMenu(!mobileMenu)}
 				>
 					{/* <Image
@@ -77,7 +83,7 @@ export default function Header(props: HeaderProps) {
 						height={20}
 					/> */}
 					menu
-				</div>
+				</motion.div>
 
 				<div
 					className={twMerge(
