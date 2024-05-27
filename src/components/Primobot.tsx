@@ -57,7 +57,42 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 	// 	});
 	// }, []);
 
-	// console.log('progress', 0.445 + progress);
+	console.log("progress", progress);
+
+	const handleRotate = (progress: number) => {
+		if (progress < 0.05) {
+			return progress * 130;
+		}
+		// else if (progress < 0.3){}
+		return progress * 180;
+	};
+
+	const handleMovementX = (progress: number) => {
+		if (progress < 0.05) {
+			return progress * 40;
+		}
+		// else if (progress >= 0.02 && progress < 0.03){
+		// 	console.log('progress X', x - progress * 50, "x" , x,);
+		// 	x = x - progress * 50;
+		// 	return x;
+		// }
+		return 0.05 * 40;
+	};
+
+	const handleMovementY = (progress: number) => {
+		if (progress < 0.05) {
+			return progress - 2;
+		}
+		return 0.05 - 2 + progress;
+	};
+
+	const handleMovementZ = (progress: number) => {
+		if (progress < 0.05) {
+			return progress;
+		}
+		return 0.05;
+	};
+
 	return (
 		// ignore next line ts
 		// @ts-ignore: Unreachable code error
@@ -65,10 +100,10 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 			{...props}
 			dispose={null}
 			animate={{
-				x: progress * 20,
-				y: progress - 2,
-				z: progress + 0,
-				rotateY: progress * 180,
+				x: handleMovementX(progress),
+				y: handleMovementY(progress),
+				z: handleMovementZ(progress),
+				rotateY: handleRotate(progress),
 			}}
 		>
 			<motion.directionalLight
@@ -121,8 +156,10 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				animate={{
 					x: -0.001,
 					y: progress + 0.505,
+					// y: handleMovement(progress),
 					z: -0.013,
 					rotateY: progress * 30,
+					// rotateY: handleRotate(progress),
 					scale: progress / 10 + 0.082,
 				}}
 				transition={{
@@ -151,7 +188,7 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 					x: 0,
 					y: 0.353,
 					// z: progress + 0.115,
-					z:  0.115,
+					z: 0.115,
 				}}
 				transition={{
 					duration: initialProgressDone ? 0.25 : 1,

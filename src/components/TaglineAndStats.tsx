@@ -8,7 +8,7 @@ import {
 import { useRef, useState } from "react";
 import { Button } from "@/stories/LiveButton";
 import { twMerge } from "tailwind-merge";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Counter from "./Counter";
 import NumberCounter from "./NumberCounter";
 
