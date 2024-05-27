@@ -85,6 +85,9 @@ export function Primobot(props: JSX.IntrinsicElements["group"]) {
 				z: handleMovementZ(progress),
 				rotateY: handleRotate(progress),
 			}}
+			transition={{
+				ease: "linear",
+			}}
 		>
 			<motion.directionalLight
 				intensity={5}
